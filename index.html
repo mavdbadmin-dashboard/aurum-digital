@@ -1,0 +1,2453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurum Digital Corp. | Where Gold Meets the Future of Money</title>
+  <meta name="description" content="Aurum Digital Corp. (AURX) — The world's first integrated hard and digital asset company combining institutional gold mining with a next-generation crypto exchange.">
+  <meta name="keywords" content="Aurum Digital, AURX, Nasdaq, gold mining, crypto exchange, tokenized gold, Cube Exchange">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #0A1628;
+      --navy-mid:   #0D1F3C;
+      --navy-light: #132543;
+      --gold:       #C9A84C;
+      --gold-light: #E2C46E;
+      --gold-pale:  #F5E9C3;
+      --gold-dim:   #8B6F30;
+      --white:      #FFFFFF;
+      --text-dim:   rgba(255,255,255,0.65);
+      --text-muted: rgba(255,255,255,0.40);
+      --border:     rgba(201,168,76,0.18);
+      --glass:      rgba(13,31,60,0.72);
+      --radius-sm:  8px;
+      --radius-md:  16px;
+      --radius-lg:  24px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    ::selection { background: rgba(201,168,76,0.35); color: var(--white); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    @media (max-width: 768px) { .container { padding: 0 20px; } }
+
+    .gold-text {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #E2C46E 0%, #C9A84C 60%, #A8892F 100%);
+      color: var(--navy);
+      box-shadow: 0 4px 24px rgba(201,168,76,0.35);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(201,168,76,0.55);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       REVEAL ANIMATIONS
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* ============================================================
+       FIXED NAVBAR
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 0;
+    }
+    #navbar.scrolled {
+      background: rgba(10,22,40,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      height: 72px;
+      gap: 48px;
+    }
+
+    /* Logo */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .nav-logo-text .wordmark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+    .nav-logo-text .tagline-small {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+      margin-left: auto;
+    }
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dim);
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      flex-shrink: 0;
+      font-size: 13px;
+      padding: 10px 22px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      margin-left: auto;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(10,22,40,0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px 32px;
+      z-index: 999;
+      transform: translateY(-100%);
+      transition: transform var(--transition);
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-menu ul a {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-dim);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color var(--transition);
+    }
+    .mobile-menu ul a:hover { color: var(--gold); }
+    .mobile-menu .btn { margin-top: 20px; width: 100%; justify-content: center; }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: block; }
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #heroCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Radial vignette over canvas */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(10,22,40,0.7) 100%);
+      z-index: 1;
+    }
+    /* Bottom fade */
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 220px;
+      background: linear-gradient(to bottom, transparent, var(--navy));
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 140px 32px 120px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.30);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      animation: fadeDown 0.8s ease 0.2s both;
+    }
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-headline {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+      animation: fadeUp 0.9s ease 0.35s both;
+    }
+    .hero-headline .line2 {
+      display: block;
+    }
+
+    .hero-subhead {
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 300;
+      color: var(--text-dim);
+      letter-spacing: 0.02em;
+      margin-bottom: 48px;
+      animation: fadeUp 0.9s ease 0.5s both;
+    }
+    .hero-subhead span {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    .hero-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+      animation: fadeUp 0.9s ease 0.65s both;
+    }
+
+    /* Floating stats bar */
+    .stats-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      background: rgba(13,31,60,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 32px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s ease 0.8s both;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(201,168,76,0.12);
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 32px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      white-space: nowrap;
+    }
+    .stat-value .gold-accent { color: var(--gold-light); }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .stats-bar { padding: 16px 20px; gap: 8px; }
+      .stat-item { padding: 8px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); width: 100%; }
+      .stat-item:last-child { border-bottom: none; }
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.5;
+      animation: fadeUp 1s ease 1.2s both;
+    }
+    .scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .scroll-mouse {
+      width: 22px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 11px;
+      display: flex;
+      justify-content: center;
+      padding-top: 6px;
+    }
+    .scroll-mouse::after {
+      content: '';
+      width: 3px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 2px;
+      animation: scrollDown 2s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0% { transform: translateY(0); opacity: 1; }
+      80% { transform: translateY(12px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0; }
+    }
+
+    /* ============================================================
+       SECTION SHARED
+    ============================================================ */
+    .section {
+      padding: 120px 0;
+      position: relative;
+    }
+    @media (max-width: 768px) { .section { padding: 80px 0; } }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 72px;
+    }
+    .section-title {
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .section-desc {
+      font-size: 18px;
+      color: var(--text-dim);
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    @media (max-width: 768px) { .section-desc { font-size: 16px; } }
+
+    /* ============================================================
+       SECTION: THE OPPORTUNITY
+    ============================================================ */
+    #opportunity {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy) 100%);
+    }
+
+    .opportunity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .opportunity-grid { grid-template-columns: 1fr; gap: 20px; } }
+
+    .opp-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    .opp-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.3);
+      border-color: rgba(201,168,76,0.4);
+    }
+    .opp-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .opp-card:hover::before { opacity: 1; }
+
+    /* Glow orb behind card */
+    .opp-card::after {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .opp-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .opp-icon svg { width: 28px; height: 28px; }
+
+    .opp-card-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .opp-card-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .opp-card-desc {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+    .opp-stat {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .opp-stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .opp-stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       SECTION: THE FLYWHEEL
+    ============================================================ */
+    #flywheel {
+      background: var(--navy-mid);
+      overflow: hidden;
+    }
+
+    .flywheel-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .flywheel-wrapper { grid-template-columns: 1fr; gap: 60px; } }
+
+    .flywheel-text .section-label { margin-bottom: 16px; }
+
+    .flywheel-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 40px;
+    }
+    .flywheel-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .flywheel-step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+    .step-content h4 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .step-content p {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    /* Circular flywheel diagram */
+    .flywheel-diagram {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      margin: 0 auto;
+    }
+    @media (max-width: 480px) {
+      .flywheel-diagram { width: 300px; height: 300px; }
+    }
+
+    /* Outer ring */
+    .fw-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.12);
+    }
+    .fw-ring-2 {
+      inset: 30px;
+      border-color: rgba(201,168,76,0.08);
+    }
+
+    /* Rotating arc */
+    .fw-arc-svg {
+      position: absolute;
+      inset: 0;
+      animation: rotateCW 8s linear infinite;
+    }
+    @keyframes rotateCW { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes rotateCCW { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+
+    .fw-arc-svg-2 {
+      position: absolute;
+      inset: 15px;
+      animation: rotateCCW 12s linear infinite;
+    }
+
+    /* Center emblem */
+    .fw-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(201,168,76,0.15), inset 0 1px 0 rgba(201,168,76,0.1);
+      z-index: 10;
+    }
+    @media (max-width: 480px) { .fw-center { width: 86px; height: 86px; } }
+    .fw-center-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .fw-center-sub {
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
+    /* Nodes on the circle */
+    .fw-node {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+    }
+    .fw-node-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--navy-mid);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      box-shadow: 0 0 24px rgba(201,168,76,0.2);
+      transition: box-shadow var(--transition);
+    }
+    @media (max-width: 480px) { .fw-node-circle { width: 52px; height: 52px; } }
+    .fw-node-circle svg { width: 28px; height: 28px; }
+    @media (max-width: 480px) { .fw-node-circle svg { width: 20px; height: 20px; } }
+
+    .fw-node-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      white-space: nowrap;
+    }
+    @media (max-width: 480px) { .fw-node-label { font-size: 9px; } }
+
+    /* Node positions (% from center of diagram) */
+    /* Top: MINE  Right: VAULT  Bottom: TRADE  Left: TOKENIZE */
+    .fw-node-mine     { top: 0%;   left: 50%; }
+    .fw-node-vault    { top: 50%;  left: 100%; }
+    .fw-node-trade    { top: 100%; left: 50%; }
+    .fw-node-tokenize { top: 50%;  left: 0%;  }
+
+    /* Pulsing glow on nodes */
+    .fw-node-circle::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      opacity: 0;
+      animation: nodeGlow 3s ease-in-out infinite;
+    }
+    .fw-node-mine .fw-node-circle::after     { animation-delay: 0s; }
+    .fw-node-vault .fw-node-circle::after    { animation-delay: 0.75s; }
+    .fw-node-trade .fw-node-circle::after    { animation-delay: 1.5s; }
+    .fw-node-tokenize .fw-node-circle::after { animation-delay: 2.25s; }
+
+    @keyframes nodeGlow {
+      0%, 100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.15); }
+    }
+
+    /* ============================================================
+       SECTION: MARKET OPPORTUNITY
+    ============================================================ */
+    #market {
+      background: var(--navy);
+    }
+
+    .counters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 72px;
+    }
+    @media (max-width: 900px) { .counters-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 480px) { .counters-grid { grid-template-columns: 1fr; } }
+
+    .counter-cell {
+      background: var(--navy-mid);
+      padding: 48px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .counter-cell::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .counter-prefix {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .counter-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #F0D898, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .counter-suffix {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #F0D898, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .counter-number-wrap {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+      margin-bottom: 12px;
+    }
+    .counter-label {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .counter-sublabel {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Comparison table */
+    .comparison-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 700px) { .comparison-wrapper { grid-template-columns: 1fr; } }
+
+    .comparison-card {
+      border-radius: var(--radius-md);
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .comparison-card.traditional { background: rgba(255,255,255,0.03); }
+    .comparison-card.aurum {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(13,31,60,0.9) 100%);
+      border-color: rgba(201,168,76,0.25);
+      box-shadow: 0 0 40px rgba(201,168,76,0.08);
+    }
+    .comp-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .comparison-card.aurum .comp-title { color: var(--gold-light); border-color: rgba(201,168,76,0.2); }
+    .comparison-card.traditional .comp-title { color: var(--text-muted); }
+    .comp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    .comp-item:last-child { margin-bottom: 0; }
+    .comp-icon { flex-shrink: 0; margin-top: 2px; }
+    .comp-text { color: var(--text-dim); line-height: 1.5; }
+    .comparison-card.aurum .comp-text { color: rgba(255,255,255,0.85); }
+
+    /* ============================================================
+       SECTION: INVESTMENT HIGHLIGHTS
+    ============================================================ */
+    #highlights {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .highlights-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .highlights-grid { grid-template-columns: 1fr; } }
+
+    .highlight-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 40px 36px;
+      backdrop-filter: blur(8px);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      border-color: rgba(201,168,76,0.35);
+    }
+    .highlight-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .highlight-card:hover::after { opacity: 1; }
+
+    .hl-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .hl-icon svg { width: 24px; height: 24px; }
+    .hl-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .hl-desc {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       SECTION: INVESTOR RELATIONS
+    ============================================================ */
+    #investors {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ir-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 900px) { .ir-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+    .ir-column h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--gold-light);
+    }
+
+    .ir-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .ir-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-dim);
+      transition: color var(--transition);
+    }
+    .ir-links a:hover { color: var(--gold-light); }
+    .ir-links a svg { flex-shrink: 0; width: 14px; height: 14px; opacity: 0.6; }
+    .ir-links a:hover svg { opacity: 1; }
+
+    .ir-news-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ir-news-item:last-child { border-bottom: none; }
+    .ir-news-date {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .ir-news-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dim);
+      line-height: 1.4;
+      transition: color var(--transition);
+    }
+    .ir-news-headline:hover { color: var(--white); cursor: pointer; }
+
+    .ir-contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ir-contact-item:last-child { border-bottom: none; }
+    .ir-contact-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .ir-contact-value {
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+    .ir-contact-value a { color: var(--gold-light); transition: color var(--transition); }
+    .ir-contact-value a:hover { color: var(--white); }
+
+    /* Nasdaq badge */
+    .nasdaq-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      margin-top: 20px;
+      background: rgba(201,168,76,0.06);
+    }
+    .nasdaq-badge span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+    }
+
+    /* ============================================================
+       COMPLIANCE BANNER
+    ============================================================ */
+    #compliance {
+      background: #050D1A;
+      border-top: 2px solid rgba(201,168,76,0.2);
+      padding: 48px 0;
+    }
+
+    .compliance-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .compliance-flag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .compliance-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .compliance-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 1000px;
+    }
+    .compliance-text p { margin-bottom: 12px; }
+    .compliance-text p:last-child { margin-bottom: 0; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: #040C19;
+      padding: 64px 0 40px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 40px;
+    }
+    @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    @media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin: 20px 0 28px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      color: var(--text-muted);
+    }
+    .social-link:hover {
+      background: rgba(201,168,76,0.1);
+      border-color: rgba(201,168,76,0.25);
+      color: var(--gold);
+    }
+    .social-link svg { width: 16px; height: 16px; }
+
+    .footer-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-legal {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .footer-disclaimer {
+      font-size: 11px;
+      color: rgba(255,255,255,0.22);
+      max-width: 600px;
+      line-height: 1.6;
+      text-align: right;
+    }
+    @media (max-width: 700px) {
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-disclaimer { text-align: left; }
+    }
+
+    /* ============================================================
+       GOLD SEPARATOR LINES
+    ============================================================ */
+    .gold-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.25;
+      margin: 0;
+    }
+
+    /* ============================================================
+       TICKER TAPE
+    ============================================================ */
+    .ticker-wrap {
+      background: rgba(201,168,76,0.06);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      overflow: hidden;
+      padding: 10px 0;
+      position: relative;
+    }
+    .ticker-track {
+      display: flex;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 40px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+    }
+    .ticker-item .up { color: #4CAF7D; }
+    .ticker-item .down { color: #E05252; }
+    .ticker-sep { color: rgba(201,168,76,0.3); }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ============================================================
+       AMBIENT GLOW BACKGROUNDS
+    ============================================================ */
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+    .glow-gold { background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%); }
+    .glow-blue { background: radial-gradient(circle, rgba(30,80,180,0.15) 0%, transparent 70%); }
+
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     FIXED NAVBAR
+============================================================ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+
+      <!-- SVG Logo -->
+      <a href="#" class="nav-logo" aria-label="Aurum Digital Corp.">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Hexagon -->
+          <path d="M22 2L39.3 12V32L22 42L4.7 32V12L22 2Z" fill="#0D1F3C" stroke="url(#hexGrad)" stroke-width="1.5"/>
+          <!-- Stylized A with gold bar crossbar -->
+          <path d="M15 31L22 14L29 31" stroke="url(#aGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- Gold bar crossbar -->
+          <rect x="17.5" y="25" width="9" height="3" rx="1" fill="url(#barGrad)"/>
+          <!-- Left leg -->
+          <path d="M17.5 25L15 31" stroke="url(#aGrad)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- Right leg -->
+          <path d="M26.5 25L29 31" stroke="url(#aGrad)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- Small shine on bar -->
+          <rect x="18" y="25.5" width="4" height="0.8" rx="0.4" fill="rgba(255,255,255,0.4)"/>
+          <!-- Corner dots -->
+          <circle cx="22" cy="4.3" r="1.2" fill="#C9A84C" opacity="0.6"/>
+          <circle cx="37.5" cy="13.2" r="1" fill="#C9A84C" opacity="0.4"/>
+          <circle cx="37.5" cy="30.8" r="1" fill="#C9A84C" opacity="0.4"/>
+          <circle cx="6.5" cy="13.2" r="1" fill="#C9A84C" opacity="0.4"/>
+          <circle cx="6.5" cy="30.8" r="1" fill="#C9A84C" opacity="0.4"/>
+          <circle cx="22" cy="39.7" r="1.2" fill="#C9A84C" opacity="0.6"/>
+          <defs>
+            <linearGradient id="hexGrad" x1="4.7" y1="2" x2="39.3" y2="42" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E2C46E"/>
+              <stop offset="0.5" stop-color="#C9A84C"/>
+              <stop offset="1" stop-color="#8B6F30"/>
+            </linearGradient>
+            <linearGradient id="aGrad" x1="15" y1="14" x2="29" y2="31" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#F0D898"/>
+              <stop offset="1" stop-color="#C9A84C"/>
+            </linearGradient>
+            <linearGradient id="barGrad" x1="17.5" y1="25" x2="26.5" y2="28" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#F5E9C3"/>
+              <stop offset="0.4" stop-color="#E2C46E"/>
+              <stop offset="1" stop-color="#A8892F"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="nav-logo-text">
+          <span class="wordmark">AURUM DIGITAL</span>
+          <span class="tagline-small">CORP.</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links">
+        <li><a href="#opportunity">About</a></li>
+        <li><a href="#opportunity">The Assets</a></li>
+        <li><a href="#highlights">Investment Case</a></li>
+        <li><a href="#investors">Investors</a></li>
+        <li><a href="#investors">News</a></li>
+      </ul>
+
+      <!-- CTA -->
+      <a href="https://www.nasdaq.com" target="_blank" rel="noopener noreferrer" class="btn btn-gold nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+        View on Nasdaq
+      </a>
+
+      <!-- Hamburger -->
+      <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="#opportunity" class="mobile-link">About</a></li>
+      <li><a href="#opportunity" class="mobile-link">The Assets</a></li>
+      <li><a href="#flywheel" class="mobile-link">The Flywheel</a></li>
+      <li><a href="#highlights" class="mobile-link">Investment Case</a></li>
+      <li><a href="#investors" class="mobile-link">Investors</a></li>
+      <li><a href="#investors" class="mobile-link">News</a></li>
+    </ul>
+    <a href="https://www.nasdaq.com" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+      View on Nasdaq ↗
+    </a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content container">
+
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Nasdaq Capital Market · Ticker: AURX
+    </div>
+
+    <h1 class="hero-headline">
+      The World's First<br>
+      <span class="line2 gold-text">Integrated Hard &amp; Digital</span><br>
+      Asset Company
+    </h1>
+
+    <p class="hero-subhead">
+      <span>We mine the gold.</span>&ensp;We tokenize it.&ensp;<span>We trade it.</span>
+    </p>
+
+    <div class="hero-btns">
+      <a href="#highlights" class="btn btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        Explore the Investment Case
+      </a>
+      <a href="#investors" class="btn btn-outline">
+        Investor Relations
+      </a>
+    </div>
+
+    <!-- Floating stats bar -->
+    <div class="stats-bar" role="region" aria-label="Key statistics">
+      <div class="stat-item">
+        <div class="stat-value"><span class="gold-accent">$4,190</span><span style="font-size:14px;color:var(--text-muted)">/oz</span></div>
+        <div class="stat-label">Gold Spot Price</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">Nasdaq</div>
+        <div class="stat-label">Capital Market</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><span class="gold-accent">[AURX]</span></div>
+        <div class="stat-label">Ticker Symbol</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value"><span class="gold-accent">$300M+</span></div>
+        <div class="stat-label">SPV Valuation</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-mouse"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TICKER TAPE
+============================================================ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <!-- Duplicated for seamless loop -->
+    <span class="ticker-item">AURX <span class="up">▲ +2.34%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">GOLD (XAU/USD) <span class="up">$4,190.40 ▲ +0.82%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">BTC/USD <span class="up">$106,820 ▲ +1.14%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">ETH/USD <span class="up">$3,480 ▲ +0.93%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">PAXG <span class="up">$4,188.20 ▲ +0.79%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Tokenized Gold Market Cap <span class="up">$7.13B ▲ +4.2% (30D)</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Cube Exchange Latency <span style="color:var(--gold-light)">200μs</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">AURX <span class="up">▲ +2.34%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">GOLD (XAU/USD) <span class="up">$4,190.40 ▲ +0.82%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">BTC/USD <span class="up">$106,820 ▲ +1.14%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">ETH/USD <span class="up">$3,480 ▲ +0.93%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">PAXG <span class="up">$4,188.20 ▲ +0.79%</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Tokenized Gold Market Cap <span class="up">$7.13B ▲ +4.2% (30D)</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Cube Exchange Latency <span style="color:var(--gold-light)">200μs</span></span>
+    <span class="ticker-sep">·</span>
+  </div>
+</div>
+
+<div class="gold-divider"></div>
+
+
+<!-- ============================================================
+     THE OPPORTUNITY
+============================================================ -->
+<section id="opportunity" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="section-label reveal">The Opportunity</div>
+      <h2 class="section-title reveal reveal-delay-1">Two Industries.<br><span class="gold-text">One Vision.</span></h2>
+      <p class="section-desc reveal reveal-delay-2">For centuries, gold and money existed in separate worlds. Aurum Digital is the first company to vertically integrate physical gold mining with institutional-grade digital asset infrastructure — creating a self-reinforcing asset ecosystem unlike anything else on the public markets.</p>
+    </div>
+
+    <div class="opportunity-grid">
+
+      <!-- Card 1: The Mine -->
+      <div class="opp-card reveal reveal-delay-1">
+        <div class="opp-icon">
+          <!-- Mountain/mine icon -->
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 22L10 10L15 16L19 11L26 22H2Z" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 22V17" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="19" cy="8" r="2.5" stroke="#C9A84C" stroke-width="1.5"/>
+            <path d="M19 8L22 5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="opp-card-label">01 — The Mine</div>
+        <h3 class="opp-card-title">Physical Gold Assets</h3>
+        <p class="opp-card-desc">Strategic gold mining properties with proven reserves and active extraction operations. Our physical assets serve as the bedrock collateral for the entire Aurum ecosystem — securing every token, every trade.</p>
+        <div class="opp-stat">
+          <span class="opp-stat-value">$4,190</span>
+          <span class="opp-stat-label">/oz spot · All-time high territory</span>
+        </div>
+      </div>
+
+      <!-- Card 2: The Exchange -->
+      <div class="opp-card reveal reveal-delay-2">
+        <div class="opp-icon">
+          <!-- Exchange/lightning icon -->
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="6" width="22" height="16" rx="3" stroke="#C9A84C" stroke-width="1.5"/>
+            <path d="M8 14H20M16 10L20 14L16 18" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 10L8 14L12 18" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="opp-card-label">02 — The Exchange</div>
+        <h3 class="opp-card-title">Cube Exchange</h3>
+        <p class="opp-card-desc">Institutional-grade crypto exchange with 200 microsecond matching engine, MPC custody, and regulatory compliance architecture. Built for professional traders and institutional capital flows at scale.</p>
+        <div class="opp-stat">
+          <span class="opp-stat-value">$300M</span>
+          <span class="opp-stat-label">SPV Valuation · 200μs matching</span>
+        </div>
+      </div>
+
+      <!-- Card 3: The Token -->
+      <div class="opp-card reveal reveal-delay-3">
+        <div class="opp-icon">
+          <!-- Token/coin icon -->
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="10" stroke="#C9A84C" stroke-width="1.5"/>
+            <circle cx="14" cy="14" r="7" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <path d="M11 17.5V10.5L14 9L17 10.5V13L14 14.5L17 16V17.5L14 19L11 17.5Z" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="opp-card-label">03 — The Token</div>
+        <h3 class="opp-card-title">Gold-Backed Digital Assets</h3>
+        <p class="opp-card-desc">Proprietary gold-backed tokens fully collateralized 1:1 by physical gold holdings. Every digital token redeemable for real metal — bridging the $183B daily gold trading market with blockchain liquidity.</p>
+        <div class="opp-stat">
+          <span class="opp-stat-value">$7.13B</span>
+          <span class="opp-stat-label">tokenized gold market · 4× growth</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+
+<!-- ============================================================
+     THE FLYWHEEL
+============================================================ -->
+<section id="flywheel" class="section">
+
+  <!-- Ambient glow -->
+  <div class="glow-orb glow-gold" style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.5;"></div>
+
+  <div class="container">
+    <div class="flywheel-wrapper">
+
+      <!-- Text side -->
+      <div class="flywheel-text">
+        <div class="section-label reveal">The Value Engine</div>
+        <h2 class="section-title reveal reveal-delay-1">The Aurum<br><span class="gold-text">Flywheel</span></h2>
+        <p class="section-desc reveal reveal-delay-2" style="text-align:left">A self-reinforcing cycle that compounds value at every turn. Each component feeds the next — creating a closed-loop system where gold production directly fuels digital asset growth, and digital asset revenue finances more gold production.</p>
+
+        <ul class="flywheel-steps">
+          <li class="flywheel-step reveal reveal-delay-2">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Mine</h4>
+              <p>Physical gold extraction from proven reserve assets. Real metal, real weight, real value.</p>
+            </div>
+          </li>
+          <li class="flywheel-step reveal reveal-delay-3">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Vault</h4>
+              <p>Institutional-grade secure custody. Gold deposited into audited vaults — the collateral foundation.</p>
+            </div>
+          </li>
+          <li class="flywheel-step reveal reveal-delay-4">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>Tokenize</h4>
+              <p>Gold-backed digital tokens issued 1:1 against physical holdings. Instant, global, frictionless.</p>
+            </div>
+          </li>
+          <li class="flywheel-step reveal reveal-delay-5">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Trade</h4>
+              <p>Tokens traded on Cube Exchange — generating fee revenue reinvested into mining expansion.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Diagram side -->
+      <div class="flywheel-diagram reveal reveal-delay-3">
+        <!-- Rings -->
+        <div class="fw-ring"></div>
+        <div class="fw-ring fw-ring-2"></div>
+
+        <!-- Rotating arc SVG -->
+        <svg class="fw-arc-svg" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="210" cy="210" r="195" stroke="url(#arcGrad1)" stroke-width="2" stroke-dasharray="60 1160" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="arcGrad1" gradientUnits="userSpaceOnUse" x1="210" y1="15" x2="405" y2="210">
+              <stop stop-color="#C9A84C" stop-opacity="0"/>
+              <stop offset="0.3" stop-color="#C9A84C"/>
+              <stop offset="0.7" stop-color="#E2C46E"/>
+              <stop offset="1" stop-color="#C9A84C" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Counter-rotating inner arc -->
+        <svg class="fw-arc-svg-2" viewBox="0 0 390 390" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="195" cy="195" r="170" stroke="url(#arcGrad2)" stroke-width="1" stroke-dasharray="40 1028" stroke-linecap="round" opacity="0.5"/>
+          <defs>
+            <linearGradient id="arcGrad2" gradientUnits="userSpaceOnUse" x1="195" y1="25" x2="365" y2="195">
+              <stop stop-color="#C9A84C" stop-opacity="0"/>
+              <stop offset="0.5" stop-color="#E2C46E"/>
+              <stop offset="1" stop-color="#C9A84C" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Center -->
+        <div class="fw-center">
+          <svg width="28" height="28" viewBox="0 0 44 44" fill="none" style="margin-bottom:6px">
+            <path d="M22 2L39.3 12V32L22 42L4.7 32V12L22 2Z" fill="rgba(201,168,76,0.1)" stroke="#C9A84C" stroke-width="1"/>
+            <rect x="17.5" y="21.5" width="9" height="4" rx="1" fill="#C9A84C"/>
+            <path d="M15 31L22 13L29 31" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="fw-center-label">Aurum<br>Flywheel</div>
+          <div class="fw-center-sub">∞ Compounding</div>
+        </div>
+
+        <!-- Nodes -->
+        <!-- MINE — Top -->
+        <div class="fw-node fw-node-mine">
+          <div class="fw-node-circle">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M2 22L10 10L15 16L19 11L26 22H2Z" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="rgba(201,168,76,0.1)"/></svg>
+          </div>
+          <div class="fw-node-label">Mine</div>
+        </div>
+
+        <!-- VAULT — Right -->
+        <div class="fw-node fw-node-vault">
+          <div class="fw-node-circle">
+            <svg viewBox="0 0 28 28" fill="none"><rect x="5" y="6" width="18" height="16" rx="2" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.1)"/><circle cx="14" cy="14" r="3" stroke="#C9A84C" stroke-width="1.5"/><line x1="23" y1="10" x2="25" y2="10" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="23" y1="18" x2="25" y2="18" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="fw-node-label">Vault</div>
+        </div>
+
+        <!-- TRADE — Bottom -->
+        <div class="fw-node fw-node-trade">
+          <div class="fw-node-circle">
+            <svg viewBox="0 0 28 28" fill="none"><polyline points="4,20 10,12 16,16 24,8" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="20,8 24,8 24,12" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="fw-node-label">Trade</div>
+        </div>
+
+        <!-- TOKENIZE — Left -->
+        <div class="fw-node fw-node-tokenize">
+          <div class="fw-node-circle">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="8" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.1)"/><path d="M11 10h4a3 3 0 010 6h-4" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/><line x1="11" y1="14" x2="17" y2="14" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="fw-node-label">Tokenize</div>
+        </div>
+
+      </div><!-- /flywheel-diagram -->
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+
+<!-- ============================================================
+     MARKET OPPORTUNITY
+============================================================ -->
+<section id="market" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="section-label reveal">Market Opportunity</div>
+      <h2 class="section-title reveal reveal-delay-1">The Numbers Are<br><span class="gold-text">Staggering</span></h2>
+      <p class="section-desc reveal reveal-delay-2">Two massive, converging markets. Aurum Digital sits at the exact intersection — positioned to capture value from both, simultaneously, at scale.</p>
+    </div>
+
+    <!-- Counter cells -->
+    <div class="counters-grid reveal">
+      <div class="counter-cell">
+        <div class="counter-number-wrap">
+          <span class="counter-prefix" style="color:var(--gold-light)">$</span>
+          <span class="counter-value" data-target="183" data-suffix="">183</span>
+          <span class="counter-suffix">B</span>
+        </div>
+        <div class="counter-label">Daily global gold trading volume</div>
+        <div class="counter-sublabel">London OTC + Exchange Combined</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-number-wrap">
+          <span class="counter-prefix" style="color:var(--gold-light)">$</span>
+          <span class="counter-value" data-target="7" data-decimals="2" data-decimal-val="7.13">7.13</span>
+          <span class="counter-suffix">B</span>
+        </div>
+        <div class="counter-label">Tokenized gold market cap</div>
+        <div class="counter-sublabel">2026 · Growing 4× in 12 months</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-number-wrap">
+          <span class="counter-prefix" style="color:var(--gold-light)">$</span>
+          <span class="counter-value" data-target="500">500</span>
+          <span class="counter-suffix">B+</span>
+        </div>
+        <div class="counter-label">Projected tokenized asset market by 2030*</div>
+        <div class="counter-sublabel">*Forward-looking estimate. Not guaranteed.</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-number-wrap">
+          <span class="counter-value" data-target="4">4</span>
+          <span class="counter-suffix">×</span>
+        </div>
+        <div class="counter-label">Growth in tokenized gold market</div>
+        <div class="counter-sublabel">12-month trailing period</div>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="comparison-wrapper">
+      <div class="comparison-card traditional reveal reveal-delay-1">
+        <div class="comp-title">Traditional Approach</div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E05252" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="comp-text">Gold mining companies with no digital exposure</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E05252" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="comp-text">Crypto exchanges with no hard asset backing</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E05252" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="comp-text">Token products without physical collateral</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E05252" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="comp-text">Single revenue stream, correlated risk profile</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E05252" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="comp-text">No compounding flywheel — value leaks at every stage</div>
+        </div>
+      </div>
+
+      <div class="comparison-card aurum reveal reveal-delay-2">
+        <div class="comp-title">Aurum Digital Corp. [AURX]</div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="comp-text">Physical gold mining with active extraction operations</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="comp-text">Cube Exchange: 200μs matching, institutional custody</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="comp-text">Fully collateralized gold-backed digital tokens</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="comp-text">Dual revenue streams: mining margins + exchange fees</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="comp-text">Compounding flywheel — each cycle compounds value</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+
+<!-- ============================================================
+     INVESTMENT HIGHLIGHTS
+============================================================ -->
+<section id="highlights" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="section-label reveal">Why AURX</div>
+      <h2 class="section-title reveal reveal-delay-1">Six Reasons to Invest in<br><span class="gold-text">Aurum Digital Corp.</span></h2>
+    </div>
+
+    <div class="highlights-grid">
+
+      <!-- 1 -->
+      <div class="highlight-card reveal reveal-delay-1">
+        <div class="hl-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="hl-title">Dual Revenue Streams</h3>
+        <p class="hl-desc">Mining margin revenue and exchange fee revenue operate independently — reducing single-source dependency and creating portfolio-level resilience regardless of market cycle.</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="highlight-card reveal reveal-delay-2">
+        <div class="hl-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="hl-title">Natural Hedge</h3>
+        <p class="hl-desc">Gold and digital assets historically exhibit low correlation with traditional equities. When equities fall, gold often rises. When gold stagnates, crypto can surge. Aurum Digital benefits from both.</p>
+      </div>
+
+      <!-- 3 -->
+      <div class="highlight-card reveal reveal-delay-3">
+        <div class="hl-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 class="hl-title">First-Mover Advantage</h3>
+        <p class="hl-desc">No publicly listed company currently integrates gold mining, tokenization, and a live crypto exchange under a single Nasdaq-listed entity. Aurum Digital holds a structural moat as the category creator.</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="highlight-card reveal reveal-delay-4">
+        <div class="hl-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3 class="hl-title">Nasdaq Listed</h3>
+        <p class="hl-desc">Full Nasdaq Capital Market compliance provides access to institutional capital, index inclusion eligibility, SEC-supervised reporting, and the credibility premium that separates institutional-grade from speculative.</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="highlight-card reveal reveal-delay-5">
+        <div class="hl-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="hl-title">Institutional Tailwinds</h3>
+        <p class="hl-desc">Gold is at all-time highs. Tokenized real-world assets are the fastest growing DeFi category. Bitcoin ETFs have unlocked institutional crypto capital. Aurum Digital is positioned at the convergence of all three.</p>
+      </div>
+
+      <!-- 6 -->
+      <div class="highlight-card reveal reveal-delay-6">
+        <div class="hl-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <h3 class="hl-title">The Flywheel Effect</h3>
+        <p class="hl-desc">Mining revenue funds exchange development. Exchange fees fund mining expansion. Token liquidity drives exchange volume. Each revolution compounds returns — creating an ever-accelerating value engine.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+
+<!-- ============================================================
+     INVESTOR RELATIONS
+============================================================ -->
+<section id="investors" class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="section-label reveal">Investor Relations</div>
+      <h2 class="section-title reveal reveal-delay-1">Transparency &amp;<br><span class="gold-text">Investor Access</span></h2>
+      <p class="section-desc reveal reveal-delay-2">Aurum Digital Corp. is committed to the highest standards of disclosure and investor communication, in full compliance with Nasdaq Listing Standards, SEC regulations, and Regulation FD.</p>
+    </div>
+
+    <div class="ir-grid reveal">
+
+      <!-- SEC Filings -->
+      <div class="ir-column">
+        <h3>SEC Filings &amp; Disclosures</h3>
+        <ul class="ir-links">
+          <li>
+            <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=10-K&dateb=&owner=include&count=40" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Annual Report (Form 10-K)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=10-Q&dateb=&owner=include&count=40" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Quarterly Reports (Form 10-Q)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=8-K&dateb=&owner=include&count=40" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Current Reports (Form 8-K)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=DEF+14A&dateb=&owner=include&count=40" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Proxy Statement (DEF 14A)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=S-1&dateb=&owner=include&count=40" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Registration Statements (S-1)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=4&dateb=&owner=include&count=40" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Insider Transactions (Form 4)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.sec.gov/cgi-bin/browse-edgar" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              SEC EDGAR — All Filings
+            </a>
+          </li>
+        </ul>
+
+        <div class="nasdaq-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Listed · Nasdaq Capital Market · [AURX]</span>
+        </div>
+      </div>
+
+      <!-- Latest News -->
+      <div class="ir-column">
+        <h3>Latest News &amp; Press Releases</h3>
+
+        <div class="ir-news-item">
+          <div class="ir-news-date">September 8, 2026</div>
+          <div class="ir-news-headline">Aurum Digital Corp. Announces Completion of $300M Cube Exchange SPV Transaction</div>
+        </div>
+        <div class="ir-news-item">
+          <div class="ir-news-date">August 21, 2026</div>
+          <div class="ir-news-headline">Aurum Digital Reports Record Gold Production at Primary Mining Asset</div>
+        </div>
+        <div class="ir-news-item">
+          <div class="ir-news-date">August 5, 2026</div>
+          <div class="ir-news-headline">Aurum Digital's Gold-Backed Token Surpasses $50M in Circulating Supply</div>
+        </div>
+        <div class="ir-news-item">
+          <div class="ir-news-date">July 18, 2026</div>
+          <div class="ir-news-headline">Cube Exchange Achieves 200 Microsecond Matching Latency Milestone</div>
+        </div>
+        <div class="ir-news-item">
+          <div class="ir-news-date">June 30, 2026</div>
+          <div class="ir-news-headline">Aurum Digital Corp. Successfully Completes Nasdaq Listing Requirements</div>
+        </div>
+
+        <div style="margin-top:20px">
+          <a href="#" class="btn btn-outline" style="font-size:13px;padding:10px 20px">
+            View All Press Releases →
+          </a>
+        </div>
+      </div>
+
+      <!-- IR Contact -->
+      <div class="ir-column">
+        <h3>Investor Contact</h3>
+
+        <div class="ir-contact-item">
+          <div class="ir-contact-label">Investor Relations</div>
+          <div class="ir-contact-value">Aurum Digital Corp.<br>Investor Relations Department</div>
+        </div>
+        <div class="ir-contact-item">
+          <div class="ir-contact-label">Email</div>
+          <div class="ir-contact-value"><a href="mailto:ir@aurumdigitalcorp.com">ir@aurumdigitalcorp.com</a></div>
+        </div>
+        <div class="ir-contact-item">
+          <div class="ir-contact-label">Phone</div>
+          <div class="ir-contact-value"><a href="tel:+18005550198">+1 (800) 555-0198</a></div>
+        </div>
+        <div class="ir-contact-item">
+          <div class="ir-contact-label">Mailing Address</div>
+          <div class="ir-contact-value">Aurum Digital Corp.<br>Attn: Investor Relations<br>100 Financial Plaza, Suite 2400<br>New York, NY 10004</div>
+        </div>
+        <div class="ir-contact-item">
+          <div class="ir-contact-label">Regulation FD Notice</div>
+          <div class="ir-contact-value" style="font-size:12px;color:var(--text-muted)">Aurum Digital Corp. uses this website, SEC filings, and press releases distributed via wire service as primary channels for material information disclosure, consistent with Regulation Fair Disclosure (Reg FD). Investors are encouraged to monitor these channels.</div>
+        </div>
+
+        <div style="margin-top:20px">
+          <a href="#" class="btn btn-gold" style="font-size:13px;padding:10px 20px;width:100%;justify-content:center">
+            Subscribe to IR Alerts →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COMPLIANCE BANNER
+============================================================ -->
+<div id="compliance">
+  <div class="container">
+    <div class="compliance-header">
+      <div class="compliance-flag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Legal Disclosure
+      </div>
+      <div class="compliance-title">Forward-Looking Statements &amp; Risk Disclosure</div>
+    </div>
+    <div class="compliance-text">
+      <p><strong style="color:var(--text-dim)">FORWARD-LOOKING STATEMENTS:</strong> This website contains "forward-looking statements" within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. These statements include, without limitation, statements relating to Aurum Digital Corp.'s expectations regarding future financial performance, business strategy, projected market opportunities, tokenized gold market projections, exchange valuations, mining production estimates, and the "$500B+ by 2030" projection. All projections and forward-looking statements are based on current expectations and assumptions and involve significant risks and uncertainties that could cause actual results to differ materially. These statements are identified by words such as "may," "will," "expect," "anticipate," "project," "estimate," "intend," "should," "believe," or similar expressions.</p>
+      <p><strong style="color:var(--text-dim)">RISK FACTORS:</strong> Investing in Aurum Digital Corp. (AURX) involves substantial risk, including but not limited to: volatility in gold and cryptocurrency markets; regulatory changes affecting digital asset issuance and exchange operations; operational risks in mining activities; cybersecurity risks inherent in digital asset platforms; general economic and market conditions; and the risk of total loss of invested capital. Past performance is not indicative of future results. The $300M SPV valuation, $7.13B tokenized gold market figure, and all market size estimates are provided for informational purposes only and do not constitute a guarantee of future performance or valuation.</p>
+      <p><strong style="color:var(--text-dim)">NOT INVESTMENT ADVICE:</strong> Nothing on this website constitutes investment, legal, tax, or financial advice. Nothing contained herein constitutes a solicitation, recommendation, endorsement, or offer to buy or sell securities. Prospective investors should review Aurum Digital Corp.'s SEC filings, including the most recent Annual Report on Form 10-K and Quarterly Reports on Form 10-Q, carefully before making any investment decision. Aurum Digital Corp. (AURX) is listed on the Nasdaq Capital Market. Securities are offered only by prospectus or other permitted means under applicable securities laws. Regulation FD Disclosure: All material non-public information will be disclosed pursuant to Regulation FD through SEC filings and broadly accessible press releases. © 2026 Aurum Digital Corp. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" aria-label="Aurum Digital Corp.">
+          <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M22 2L39.3 12V32L22 42L4.7 32V12L22 2Z" fill="#0D1F3C" stroke="url(#fHexGrad)" stroke-width="1.5"/>
+            <path d="M15 31L22 14L29 31" stroke="url(#fAGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="17.5" y="25" width="9" height="3" rx="1" fill="url(#fBarGrad)"/>
+            <defs>
+              <linearGradient id="fHexGrad" x1="4.7" y1="2" x2="39.3" y2="42" gradientUnits="userSpaceOnUse"><stop stop-color="#E2C46E"/><stop offset="1" stop-color="#8B6F30"/></linearGradient>
+              <linearGradient id="fAGrad" x1="15" y1="14" x2="29" y2="31" gradientUnits="userSpaceOnUse"><stop stop-color="#F0D898"/><stop offset="1" stop-color="#C9A84C"/></linearGradient>
+              <linearGradient id="fBarGrad" x1="17.5" y1="25" x2="26.5" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#F5E9C3"/><stop offset="1" stop-color="#A8892F"/></linearGradient>
+            </defs>
+          </svg>
+          <div class="nav-logo-text">
+            <span class="wordmark" style="font-size:14px">AURUM DIGITAL</span>
+            <span class="tagline-small" style="font-size:8px">CORP.</span>
+          </div>
+        </a>
+        <p>Where Gold Meets the Future of Money. The world's first integrated hard and digital asset company — mining gold, tokenizing it, and trading it on institutional-grade infrastructure.</p>
+        <div class="footer-social">
+          <!-- X / Twitter -->
+          <a href="#" class="social-link" aria-label="Follow on X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#" class="social-link" aria-label="Follow on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <!-- Telegram -->
+          <a href="#" class="social-link" aria-label="Telegram channel">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.527 14.47 4.563 13.58c-.66-.204-.672-.66.136-.975l10.985-4.235c.55-.203 1.03.126.854.98z"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" class="social-link" aria-label="YouTube channel">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#opportunity">About Aurum Digital</a></li>
+          <li><a href="#opportunity">The Mining Assets</a></li>
+          <li><a href="#opportunity">Cube Exchange</a></li>
+          <li><a href="#flywheel">The Flywheel</a></li>
+          <li><a href="#">Leadership Team</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+
+      <!-- Investors -->
+      <div class="footer-col">
+        <h4>Investors</h4>
+        <ul>
+          <li><a href="#investors">Investor Relations</a></li>
+          <li><a href="https://www.sec.gov" target="_blank" rel="noopener noreferrer">SEC Filings</a></li>
+          <li><a href="#">Annual Reports</a></li>
+          <li><a href="#">Corporate Governance</a></li>
+          <li><a href="#">Press Releases</a></li>
+          <li><a href="#">Email Alerts</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#compliance">Forward-Looking Statements</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Regulation FD Policy</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        © 2026 Aurum Digital Corp. All rights reserved. · <span style="color:var(--gold-dim)">AURX</span> · Nasdaq Capital Market
+      </div>
+      <div class="footer-disclaimer">
+        Securities involve risk. Not investment advice. Forward-looking statements subject to risk. See full disclosure above and all SEC filings at EDGAR.
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+'use strict';
+
+// ── NAVBAR: scroll effect ─────────────────────────────────────
+const navbar = document.getElementById('navbar');
+function handleScroll() {
+  if (window.scrollY > 40) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+}
+window.addEventListener('scroll', handleScroll, { passive: true });
+handleScroll();
+
+// ── HAMBURGER MENU ────────────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  const open = hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  mobileMenu.setAttribute('aria-hidden', !open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+    mobileMenu.setAttribute('aria-hidden', true);
+    document.body.style.overflow = '';
+  });
+});
+
+// Close menu on outside click
+document.addEventListener('click', (e) => {
+  if (!navbar.contains(e.target)) {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+    mobileMenu.setAttribute('aria-hidden', true);
+    document.body.style.overflow = '';
+  }
+});
+
+// ── HERO PARTICLE CANVAS ──────────────────────────────────────
+(function initParticles() {
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], animId;
+  const PARTICLE_COUNT = 90;
+  const MAX_DIST = 140;
+  const GOLD = 'rgba(201,168,76,';
+  const WHITE = 'rgba(255,255,255,';
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function rand(a, b) { return Math.random() * (b - a) + a; }
+
+  function createParticle() {
+    return {
+      x: rand(0, W),
+      y: rand(0, H),
+      vx: rand(-0.25, 0.25),
+      vy: rand(-0.25, 0.25),
+      r: rand(0.8, 2.4),
+      alpha: rand(0.3, 0.85),
+      gold: Math.random() > 0.35,  // 65% gold, 35% white
+      pulse: rand(0, Math.PI * 2),
+      pulseSpeed: rand(0.008, 0.022)
+    };
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(createParticle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Background gradient
+    const bg = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * 0.7);
+    bg.addColorStop(0, '#0D1F3C');
+    bg.addColorStop(1, '#0A1628');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    const len = particles.length;
+
+    // Draw connections
+    for (let i = 0; i < len; i++) {
+      const a = particles[i];
+      for (let j = i + 1; j < len; j++) {
+        const b = particles[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MAX_DIST) {
+          const opacity = (1 - dist / MAX_DIST) * 0.18;
+          ctx.beginPath();
+          ctx.strokeStyle = GOLD + opacity + ')';
+          ctx.lineWidth = 0.6;
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw particles
+    for (let i = 0; i < len; i++) {
+      const p = particles[i];
+      p.pulse += p.pulseSpeed;
+      const pulsed = p.alpha * (0.7 + 0.3 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = (p.gold ? GOLD : WHITE) + pulsed + ')';
+      ctx.fill();
+
+      // Subtle glow on larger particles
+      if (p.r > 1.8) {
+        const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        grd.addColorStop(0, GOLD + (pulsed * 0.3) + ')');
+        grd.addColorStop(1, GOLD + '0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+      }
+
+      // Move
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Boundary bounce
+      if (p.x < -20) p.x = W + 20;
+      if (p.x > W + 20) p.x = -20;
+      if (p.y < -20) p.y = H + 20;
+      if (p.y > H + 20) p.y = -20;
+    }
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    initParticles();
+  }, { passive: true });
+
+  resize();
+  initParticles();
+  draw();
+
+  // Pause when hero not visible (performance)
+  const heroEl = document.getElementById('hero');
+  const canvasObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!animId) draw();
+      } else {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    });
+  }, { threshold: 0.01 });
+  canvasObserver.observe(heroEl);
+})();
+
+// ── SCROLL REVEAL (IntersectionObserver) ──────────────────────
+(function initReveal() {
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+})();
+
+// ── COUNTER ANIMATIONS ────────────────────────────────────────
+(function initCounters() {
+  const cells = document.querySelectorAll('.counter-cell');
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+
+      const el = entry.target.querySelector('.counter-value');
+      if (!el) return;
+
+      const target = parseFloat(el.dataset.target);
+      const hasDecimals = el.dataset.decimals === '2';
+      const finalVal = hasDecimals ? parseFloat(el.dataset.decimalVal) : target;
+      const duration = 2000;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOut(progress);
+        const current = hasDecimals ? (finalVal * eased) : Math.round(target * eased);
+        el.textContent = hasDecimals ? current.toFixed(2) : current;
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = hasDecimals ? finalVal.toFixed(2) : target;
+      }
+
+      requestAnimationFrame(update);
+    });
+  }, { threshold: 0.4 });
+
+  cells.forEach(cell => observer.observe(cell));
+})();
+
+// ── SMOOTH ANCHOR SCROLL ──────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const offset = 80;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+
+// ── FLYWHEEL NODE ACTIVE CYCLE ────────────────────────────────
+(function flywheelCycle() {
+  const nodes = document.querySelectorAll('.fw-node-circle');
+  if (!nodes.length) return;
+  let idx = 0;
+  setInterval(() => {
+    nodes.forEach(n => n.style.boxShadow = '');
+    nodes[idx].style.boxShadow = '0 0 32px rgba(201,168,76,0.6), 0 0 0 2px rgba(201,168,76,0.4)';
+    idx = (idx + 1) % nodes.length;
+  }, 750);
+})();
+
+</script>
+</body>
+</html>
